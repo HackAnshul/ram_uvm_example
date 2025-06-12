@@ -1,1 +1,1 @@
-Testbench for *dual port ram* as an example to learn UVM
+> To make a basic testbench environment using UVM tools for dual port ram
