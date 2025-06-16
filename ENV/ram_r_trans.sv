@@ -6,9 +6,9 @@ class ram_r_trans extends uvm_sequence_item ;
   bit [(`DATA_WIDTH-1):0] rd_data;
 
   `uvm_object_utils_begin(ram_r_trans)
-  `uvm_field_int(rd_enb,UVM_ALL_ON)
-  `uvm_field_int(rd_addr,UVM_ALL_ON)
-  `uvm_field_int(rd_data,UVM_ALL_ON)
+    `uvm_field_int(rd_enb,UVM_ALL_ON)
+    `uvm_field_int(rd_addr,UVM_ALL_ON)
+    `uvm_field_int(rd_data,UVM_ALL_ON)
   `uvm_object_utils_end
 
   function new(string name = "ram_r_trans")

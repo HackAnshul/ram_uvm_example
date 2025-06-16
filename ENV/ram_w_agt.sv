@@ -3,6 +3,8 @@
 class ram_w_agt extends uvm_agent;
   `uvm_component_utils(ram_w_agt)
 
+  uvm_analysis_export #(ram_w_trans) w_agt_analysis_exp;
+
   virtual ram_inf vif;
   ram_w_drv w_drv_h;
   ram_w_mon w_mon_h;
@@ -26,6 +28,7 @@ endfunction
 function void ram_w_agt::connect_phase(uvm_phase phase);
   super.connect_phase(phase);
   w_drv_h.seq_item_port.connect(w_seqr_h.seq_item_export);
+  w_agt_analysis_exp.connect(w_mon_h.w_mon_sb);
   w_drv_h.vif = vif;
   w_mon_h.vif = vif;
 endfunction

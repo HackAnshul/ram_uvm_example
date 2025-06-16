@@ -60,6 +60,11 @@ interface ram_inf(input clk);
   modport R_MON_MP (clocking r_mon_cb, input clk);
   modport W_MON_MP (clocking w_mon_cb, input clk);
 
+  task reset(int delay = 10);
+    rst = 1;
+    #delay;
+    rst = 0;
+  endtask
 
 endinterface
 

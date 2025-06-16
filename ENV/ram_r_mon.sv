@@ -1,0 +1,34 @@
+`ifndef RAM_R_MON_SV
+`define RAM_R_MON_SV
+class ram_r_mon extends uvm_monitor;
+
+  virtual ram_inf vif;
+  ram_r_trans r_mon_item;
+  uvm_analysis_port #(ram_r_trans) r_mon_sb;
+
+  `uvm_component_utils(ram_r_mon)
+
+  function new (string name = "ram_r_mon", uvm_component parent);
+    super.new(name, parent);
+    r_mon_sb = new("r_mon_sb", this);
+  endfunction
+
+  extern task run_phase(uvm_phase phase);
+  extern task monitor();
+endclass
+
+task run_phase(uvm_phase phase);
+  //TODO: reset handling
+  forever begin
+    @(vif.r_mon_cb)
+    monitor();
+    r_mon_sb.write(r_mon_item);
+  end
+endtask
+
+task monitor();
+  r_mon_item = r_mon_item::type_id::create("r_mon_item");
+  r_mon_item.rd_enb = vif.r_mon_cb.rd_enb;
+  r_mon_item.rd_addr = vif.r_mon_cb.rd_addr;
+endtask
+`endif

@@ -4,9 +4,9 @@ class ram_r_drv extends uvm_driver #(ram_r_trans);
 
   virtual ram_inf vif;
 
-  `uvm_object_utils(ram_r_drv)
+  `uvm_component_utils(ram_r_drv)
 
-  function new (string name ="ram_r_drv", uvm_component parent);
+  function new (string name = "ram_r_drv", uvm_component parent);
     super.new(name, parent);
   endfunction
 
