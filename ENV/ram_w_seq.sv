@@ -12,13 +12,13 @@ class ram_w_seq extends uvm_sequence #(ram_w_trans);
 
   extern task body();
 endclass
-task body();
-  int itr=0;
+task ram_w_seq::body();
+  automatic int itr=0;
   repeat(no_of_trans) begin
     itr+=1;
     w_trans_h = ram_w_trans::type_id::create("w_trans_h");
     start_item(w_trans_h);
-    assert(w_trans_h.randomize() with {wr_data > 150; wr_addr == itr});
+    assert(w_trans_h.randomize() with {wr_data > 150; wr_addr == itr;});
     finish_item(w_trans_h);
   end
 endtask

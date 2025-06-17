@@ -11,7 +11,7 @@ class ram_r_trans extends uvm_sequence_item ;
     `uvm_field_int(rd_data,UVM_ALL_ON)
   `uvm_object_utils_end
 
-  function new(string name = "ram_r_trans")
+  function new(string name = "ram_r_trans");
     super.new(name);
   endfunction
 endclass

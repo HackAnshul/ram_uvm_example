@@ -22,7 +22,9 @@ endfunction
 
 function void ram_env::connect_phase(uvm_phase phase);
   super.connect_phase(phase);
-  w_agt_h.w_mon_h.w_mon_sb.connect(sb_h.w_mon_sb);
+  //w_agt_h.w_agt_analysis_exp.connect(sb_h.w_mon_sb);
+  //r_agt_h.r_agt_analysis_exp.connect(sb_h.r_mon_sb);
   r_agt_h.r_mon_h.r_mon_sb.connect(sb_h.r_mon_sb);
+  w_agt_h.w_mon_h.w_mon_sb.connect(sb_h.w_mon_sb);
 endfunction
 `endif

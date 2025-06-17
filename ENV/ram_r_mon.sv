@@ -17,7 +17,7 @@ class ram_r_mon extends uvm_monitor;
   extern task monitor();
 endclass
 
-task run_phase(uvm_phase phase);
+task ram_r_mon::run_phase(uvm_phase phase);
   //TODO: reset handling
   forever begin
     @(vif.r_mon_cb)
@@ -26,8 +26,8 @@ task run_phase(uvm_phase phase);
   end
 endtask
 
-task monitor();
-  r_mon_item = r_mon_item::type_id::create("r_mon_item");
+task ram_r_mon::monitor();
+  r_mon_item = ram_r_trans::type_id::create("r_mon_item");
   r_mon_item.rd_enb = vif.r_mon_cb.rd_enb;
   r_mon_item.rd_addr = vif.r_mon_cb.rd_addr;
 endtask

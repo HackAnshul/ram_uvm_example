@@ -6,21 +6,21 @@ class ram_w_drv extends uvm_driver #(ram_w_trans);
 
   `uvm_object_utils(ram_w_drv)
 
-  function new (string name ="ram_w_drv", uvm_component parent);
+  function new (string name ="ram_w_drv", uvm_component parent=null);
     super.new(name, parent);
   endfunction
 
-  extern function void build_phase(uvm_phase phase);
-  extern function void run_phase(uvm_phase phase);
-  extern task send_to_dut(ram_r_trans req);
+  //extern function void build_phase(uvm_phase phase);
+  extern task run_phase(uvm_phase phase);
+  extern task send_to_dut(ram_w_trans req);
 
 endclass
 
-function void ram_r_drv::build_phase(uvm_phase phase);
-    super.build_phase(phase);
-endfunction
+//function void ram_r_drv::build_phase(uvm_phase phase);
+//    super.build_phase(phase);
+//endfunction
 
-function void ram_w_drv::run_phase(uvm_phase phase);
+task ram_w_drv::run_phase(uvm_phase phase);
   //TODO : reset handling
   forever begin
     @(vif.w_drv_cb);
@@ -28,9 +28,9 @@ function void ram_w_drv::run_phase(uvm_phase phase);
     send_to_dut(req);
     seq_item_port.item_done();
   end
-endfunction
+endtask
 
-task send_to_dut(ram_w_trans req);
+task ram_w_drv::send_to_dut(ram_w_trans req);
   vif.w_drv_cb.wr_enb <=req.wr_enb;
   vif.w_drv_cb.wr_addr <=req.wr_addr;
   vif.w_drv_cb.wr_data <=req.wr_data;

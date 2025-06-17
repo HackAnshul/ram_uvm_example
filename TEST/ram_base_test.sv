@@ -23,11 +23,11 @@ class ram_base_test extends uvm_test;
      phase.raise_objection(this);
      fork
        begin
-         void'(w_seq_h.randomize() with {no_of_trans == 10});
+         void'(w_seq_h.randomize() with {no_of_trans == 10;});
          w_seq_h.start(env_h.w_agt_h.w_seqr_h);
        end
        begin
-         void'(r_seq_h.randomize() with {no_of_trans == 10});
+         void'(r_seq_h.randomize() with {no_of_trans == 10;});
          r_seq_h.start(env_h.r_agt_h.r_seqr_h);
        end
      join

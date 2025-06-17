@@ -1,7 +1,7 @@
-RTL = ..\RTL\ram_16x8.v
-PKG = ..\TEST\ram_pkg.sv
-TOP = ..\TOP\ram_top.sv
-INCDIR = +incdir+..\ENV +incdir+..\TEST
+RTL = ../RTL/ram_16x8.v
+PKG = ../TEST/ram_pkg.sv
+TOP = ../TOP/ram_top.sv
+INCDIR = +incdir+../ENV +incdir+../TEST
 TOP_MOD = ram_top
 COVERAGE = -c -do "coverage save -onexit -directive -cvg -codeall
 

@@ -12,13 +12,13 @@ class ram_r_seq extends uvm_sequence #(ram_r_trans);
 
   extern task body();
 endclass
-task body();
-  int itr = 0;
+task ram_r_seq::body();
+  automatic int itr = 0;
   repeat(no_of_trans) begin
     r_trans_h = ram_r_trans::type_id::create("r_trans_h");
     start_item(r_trans_h);
     assert(r_trans_h.randomize() with {rd_addr == itr;});
-    finish_item(w_trans_h);
+    finish_item(r_trans_h);
     itr+=1;
   end
 endtask
