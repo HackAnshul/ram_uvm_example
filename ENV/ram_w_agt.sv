@@ -23,6 +23,9 @@ function void ram_w_agt::build_phase(uvm_phase phase);
   w_drv_h = ram_w_drv::type_id::create("w_drv_h", this);
   w_mon_h = ram_w_mon::type_id::create("w_mon_h", this);
   w_seqr_h = ram_w_seqr::type_id::create("w_seqr_h", this);
+
+  if (!uvm_config_db#(virtual ram_inf)::get(this,"","vif", vif))
+        `uvm_fatal("RAM_WRITE_AGENT", "The virtual interface get failed")
 endfunction
 
 function void ram_w_agt::connect_phase(uvm_phase phase);

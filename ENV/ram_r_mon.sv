@@ -22,6 +22,7 @@ task ram_r_mon::run_phase(uvm_phase phase);
   forever begin
     @(vif.r_mon_cb)
     monitor();
+    r_mon_item.print();
     r_mon_sb.write(r_mon_item);
   end
 endtask
