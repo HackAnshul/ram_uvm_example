@@ -18,12 +18,23 @@ class ram_r_mon extends uvm_monitor;
 endclass
 
 task ram_r_mon::run_phase(uvm_phase phase);
-  //TODO: reset handling
+  // initial reset
+  wait(vif.rst);
+  wait(!vif.rst);
   forever begin
-    @(vif.r_mon_cb)
-    monitor();
-    r_mon_item.print();
-    r_mon_sb.write(r_mon_item);
+    fork
+      begin
+        wait(vif.rst); // in-b/w reset assert
+      end
+      forever begin
+        @(vif.r_mon_cb)
+        monitor();
+        r_mon_item.print();
+        r_mon_sb.write(r_mon_item);
+      end
+    join_any
+    disable fork;
+    wait(!vif.rst); //reset release
   end
 endtask
 

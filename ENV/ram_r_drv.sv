@@ -21,12 +21,24 @@ endclass
 //endfunction
 
 task ram_r_drv::run_phase(uvm_phase phase);
-  //TODO : reset handling
+
+  // wait for initial reset
+  wait(vif.rst);
+  wait(!vif.rst);
   forever begin
-    @(vif.r_drv_cb);
-    seq_item_port.get_next_item(req);
-    send_to_dut(req);
-    seq_item_port.item_done();
+    fork
+      begin
+        wait(vif.rst); //in-b/w reset assert
+      end
+      forever begin
+        @(vif.r_drv_cb);
+        seq_item_port.get_next_item(req);
+        send_to_dut(req);
+        seq_item_port.item_done();
+      end
+    join_any
+    disable fork;
+    wait(!vif.rst); //reset release
   end
 endtask
 

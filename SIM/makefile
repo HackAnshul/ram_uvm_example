@@ -10,7 +10,7 @@ vlog:
 	vlog $(RTL) $(PKG) $(TOP) $(INCDIR)
 
 qverilog :
-	qverilog  $(RTL) $(PKG) $(TOP) $(INCDIR) -R +UVM_VERBOSITY=UVM_FULL
+	qverilog  $(RTL) $(PKG) $(TOP) $(INCDIR) -R +UVM_VERBOSITY=UVM_FULL +UVM_TESTNAME=$(TESTNAME)
 
 vsim :
 	vsim -voptargs=+acc $(TOP_MOD)

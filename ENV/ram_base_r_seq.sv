@@ -1,18 +1,18 @@
-`ifndef RAM_R_SEQ_SV
-`define RAM_R_SEQ_SV
-class ram_r_seq extends uvm_sequence #(ram_r_trans);
+`ifndef RAM_BASE_R_SEQ_SV
+`define RAM_BASE_R_SEQ_SV
+class ram_base_r_seq extends uvm_sequence #(ram_r_trans);
   `uvm_object_utils(ram_r_seq)
 
   rand int no_of_trans;
   ram_r_trans r_trans_h;
 
-  function new(string name = "ram_r_seq");
+  function new(string name = "ram_base_r_seq");
     super.new(name);
   endfunction
 
-  extern task body();
+  //extern task body();
 endclass
-task ram_r_seq::body();
+/*task ram_r_seq::body();
   automatic int itr = 0;
   repeat(no_of_trans) begin
     r_trans_h = ram_r_trans::type_id::create("r_trans_h");
@@ -21,5 +21,5 @@ task ram_r_seq::body();
     finish_item(r_trans_h);
     itr+=1;
   end
-endtask
+endtask*/
 `endif

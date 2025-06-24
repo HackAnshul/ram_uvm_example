@@ -26,7 +26,7 @@ module ram_top();
      fork
        inf.reset(20);
        uvm_config_db #(virtual ram_inf)::set(null,"*","vif",inf);
-       run_test("ram_base_test");
+       run_test();
      join
    end
 

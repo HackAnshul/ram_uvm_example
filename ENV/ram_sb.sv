@@ -28,7 +28,15 @@ function void ram_sb::write_wr(ram_w_trans trans_h);
   if(trans_h.wr_enb)
     mem[trans_h.wr_addr] = trans_h.wr_data;
 endfunction
+
 function void ram_sb::write_rd(ram_r_trans trans_h);
+  trans_h.print();
+  if(trans_h.rd_enb) begin
+    if(ram_dyn[trans_h.rd_addr] == trans_h.rd_data )
+      `uvm_info("info","pass",UVM_LOW);
+    else
+      `uvm_error("error",$sformatf("fail exp_data = %p",ram_dyn[trans_h.rd_addr]));
+  end
 endfunction
 
 `endif
