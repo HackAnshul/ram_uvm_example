@@ -1,7 +1,7 @@
 `ifndef RAM_SIMP_R_SEQ_SVH
 `define RAM_SIMP_R_SEQ_SVH
 
-class ram_simp_r_seq extends ram_base_r_seq;
+class ram_simp_r_seq extends ram_r_base_seq;
 
   `uvm_object_utils(ram_simp_r_seq)
 
@@ -13,8 +13,8 @@ class ram_simp_r_seq extends ram_base_r_seq;
 endclass
 
 task ram_simp_r_seq::body();
-  repeat(no_of_itr) begin
-    req = ram_seq_item_r::type_id::create("req");
+  repeat(no_of_trans) begin
+    req = ram_r_base_seq::type_id::create("req");
     start_item(req);
     if(!req.randomize() with {kind_e == READ;})
       `uvm_error("RSEQ","FAILED")

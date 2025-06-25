@@ -4,7 +4,8 @@ class ram_base_v_seq extends uvm_sequence #(uvm_sequence_item);
   `uvm_object_utils_begin(ram_w_seq)
   `uvm_object_utils_end
 
-  ram_virtual_seqr v_seqr_h;
+  //ram_virtual_seqr v_seqr_h;
+  `uvm_declare_p_sequencer (my_virtual_sequencer)
 
   function new(string name = "");
     super.new(name);

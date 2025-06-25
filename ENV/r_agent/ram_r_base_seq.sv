@@ -1,12 +1,12 @@
-`ifndef RAM_BASE_R_SEQ_SV
-`define RAM_BASE_R_SEQ_SV
-class ram_base_r_seq extends uvm_sequence #(ram_r_trans);
-  `uvm_object_utils(ram_r_seq)
+`ifndef RAM_R_BASE_SEQ_SV
+`define RAM_R_BASE_SEQ_SV
+class ram_r_base_seq extends uvm_sequence #(ram_r_trans);
+  `uvm_object_utils(ram_r_base_seq)
 
   rand int no_of_trans;
   ram_r_trans r_trans_h;
 
-  function new(string name = "ram_base_r_seq");
+  function new(string name = "ram_r_base_seq");
     super.new(name);
   endfunction
 

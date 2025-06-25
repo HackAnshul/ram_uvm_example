@@ -1,7 +1,7 @@
-`ifndef RAM_BASE_W_SEQ_SV
-`define RAM_BASE_W_SEQ_SV
-class ram_base_w_seq extends uvm_sequence #(ram_w_trans);
-  `uvm_object_utils(ram_w_seq)
+`ifndef RAM_W_BASE_SEQ_SV
+`define RAM_W_BASE_SEQ_SV
+class ram_w_base_seq extends uvm_sequence #(ram_w_trans);
+  `uvm_object_utils(ram_w_base_seq)
 
   rand int no_of_trans;
   ram_w_trans w_trans_h;
