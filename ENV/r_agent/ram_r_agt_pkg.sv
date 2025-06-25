@@ -1,4 +1,4 @@
-package ram_ragent_pkg;
+package ram_r_agt_pkg;
 
   import uvm_pkg::*;
   `include "uvm_macros.svh"
