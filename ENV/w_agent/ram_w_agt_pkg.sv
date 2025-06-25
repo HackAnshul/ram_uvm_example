@@ -2,7 +2,7 @@ package ram_ragent_pkg;
 
   import uvm_pkg::*;
   `include "uvm_macros.svh"
-  `include "ram_defines.sv"
+  `include "ram_defines.svh"
   `include "ram_env_config.svh"
 
   `include "ram_w_trans.sv"

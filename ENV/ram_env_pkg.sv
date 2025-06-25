@@ -1,4 +1,4 @@
-`include "ram_defines.sv"
+`include "ram_defines.svh"
 `include "ram_inf.sv"
 
 package ram_env_pkg;

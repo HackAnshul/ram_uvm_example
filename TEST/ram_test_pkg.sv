@@ -2,7 +2,7 @@ package ram_test_pkg;
 
   import uvm_pkg::*;
   `include "uvm_macros.svh"
-  `include "ram_defines.sv"
+  `include "ram_defines.svh"
 
   import ram_w_agt_pkg::*;
   import ram_r_agt_pkg::*;
